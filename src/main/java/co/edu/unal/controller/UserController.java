@@ -39,7 +39,7 @@ public class UserController {
 	    JSONObject response = new JSONObject();
 	    if(users.size() < 1 || !users.get(0).getPassword().equals(password)) {
 	    	response.put("login", "failure");
-	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.UNAUTHORIZED);
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
 	    }
 	    else {
 	    	response.put("login", "success");
