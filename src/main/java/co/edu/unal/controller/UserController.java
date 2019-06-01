@@ -50,7 +50,14 @@ public class UserController {
 	// Create a new User
 	@PostMapping("/users")
 	public User createUser(@Valid @RequestBody User user) {
-	    return userRepository.save(user);
+	    List<User> users = userRepository.findByPersonalId(user.getPersonal_id());
+	    if(users.isEmpty())
+	    	return userRepository.save(user);
+	    else {
+	    	User empty = new User();
+	    	
+	    	return empty;
+	    }
 	}
 
 	// Update a User
