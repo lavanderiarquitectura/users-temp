@@ -35,7 +35,7 @@ public class User implements Serializable{
 		}
 
 		@NotNull
-	  	private Integer personal_id;
+	  	private Integer personalId;
 
 	  	@NotBlank
 	  	private String password;
@@ -63,11 +63,11 @@ public class User implements Serializable{
 		}
 
 		public Integer getPersonal_id() {
-			return personal_id;
+			return personalId;
 		}
 
 		public void setPersonal_id(Integer personal_id) {
-			this.personal_id = personal_id;
+			this.personalId = personal_id;
 		}
 
 		public String getPassword() {

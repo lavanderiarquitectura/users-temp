@@ -4,7 +4,9 @@ import co.edu.unal.exception.ResourceNotFoundException;
 import co.edu.unal.model.User;
 import co.edu.unal.repository.UserRepository;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -30,10 +32,32 @@ public class UserController {
 	            .orElseThrow(() -> new ResourceNotFoundException("Note", "id", userId));
 	}
 	
+	//Check if username/password are valid for login
+	@GetMapping("/users/{personal_id}/{password}")
+	public ResponseEntity<Object> loginUser(@PathVariable(value = "personal_id") Integer personalID, @PathVariable(value = "password") String password) {
+	    List<User> users = userRepository.findByPersonalId(personalID);
+	    JSONObject response = new JSONObject();
+	    if(users.size() < 1 || !users.get(0).getPassword().equals(password)) {
+	    	response.put("login", "failure");
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
+	    }
+	    else {
+	    	response.put("login", "success");
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
+	    }
+	}
+	
 	// Create a new User
 	@PostMapping("/users")
 	public User createUser(@Valid @RequestBody User user) {
-	    return userRepository.save(user);
+	    List<User> users = userRepository.findByPersonalId(user.getPersonal_id());
+	    if(users.isEmpty())
+	    	return userRepository.save(user);
+	    else {
+	    	User empty = new User();
+	    	
+	    	return empty;
+	    }
 	}
 
 	// Update a User
