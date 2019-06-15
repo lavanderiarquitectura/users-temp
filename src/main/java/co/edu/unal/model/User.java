@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "rooms")
+@Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties( allowGetters = true)
 public class User implements Serializable{
@@ -45,6 +45,8 @@ public class User implements Serializable{
 	  	
 	  	@NotNull
 	  	private boolean is_active;
+
+	  	private String username;
 
 		public Long getId() {
 			return id;
@@ -94,4 +96,11 @@ public class User implements Serializable{
 			this.is_active = is_active;
 		}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }
