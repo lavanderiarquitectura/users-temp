@@ -16,85 +16,87 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties( allowGetters = true)
 public class User implements Serializable{
-	  	@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
-	  	
-	  	@NotBlank
-	  	private String name;
-	  	
-	  	@NotBlank
-	  	private String last_name;
-	  	
-	  	public String getLast_name() {
-			return last_name;
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-		public void setLast_name(String last_name) {
-			this.last_name = last_name;
-		}
+	@NotBlank
+	private String name;
 
-		@NotNull
-	  	private Integer personalId;
+	@NotBlank
+	private String last_name;
 
-	  	@NotBlank
-	  	private String password;
-	  	
-	  	@NotNull
-	  	private Integer room_id;
-	  	
-	  	@NotNull
-	  	private boolean is_active;
+	public String getLast_name() {
+		return last_name;
+	}
 
-	  	private String username;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
 
-		public Long getId() {
-			return id;
-		}
+	@NotNull
+	private Integer personalId;
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	@NotBlank
+	private String password;
 
-		public String getName() {
-			return name;
-		}
+	@NotNull
+	private Integer room_id;
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	@NotNull
+	private boolean is_active;
 
-		public Integer getPersonal_id() {
-			return personalId;
-		}
+	private boolean was_last_user;
 
-		public void setPersonal_id(Integer personal_id) {
-			this.personalId = personal_id;
-		}
+	private String username;
 
-		public String getPassword() {
-			return password;
-		}
+	public Long getId() {
+		return id;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public Integer getRoom_id() {
-			return room_id;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public void setRoom_id(Integer room_id) {
-			this.room_id = room_id;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public boolean getIs_active() {
-			return is_active;
-		}
+	public Integer getPersonal_id() {
+		return personalId;
+	}
 
-		public void setIs_active(boolean is_active) {
-			this.is_active = is_active;
-		}
+	public void setPersonal_id(Integer personal_id) {
+		this.personalId = personal_id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getRoom_id() {
+		return room_id;
+	}
+
+	public void setRoom_id(Integer room_id) {
+		this.room_id = room_id;
+	}
+
+	public boolean getIs_active() {
+		return is_active;
+	}
+
+	public void setIs_active(boolean is_active) {
+		this.is_active = is_active;
+	}
 
 	public String getUsername() {
 		return username;
@@ -103,4 +105,13 @@ public class User implements Serializable{
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public boolean getWas_last_user() {
+		return was_last_user;
+	}
+
+	public void setWas_last_user(boolean was_last_user) {
+		this.was_last_user = was_last_user;
+	}
+
 }
