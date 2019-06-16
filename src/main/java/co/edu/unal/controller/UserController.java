@@ -32,17 +32,6 @@ public class UserController {
 	            .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 	}
 	
-	// Get most recent user
-	@GetMapping("/users/recent")
-	public User getMostRecentUser() {
-	    List<User> users = userRepository.findAll();
-	    for(User u: users) {
-	    	if(u.getWas_last_user())
-	    		return u;
-	    }
-	    throw new ResourceNotFoundException("User", "id", 0);
-	}
-	
 	//Check if username/password are valid for login
 	@GetMapping("/users/{personal_id}/{password}")
 	public ResponseEntity<Object> loginUser(@PathVariable(value = "personal_id") Integer personalID, @PathVariable(value = "password") String password) {
@@ -54,12 +43,6 @@ public class UserController {
 	    }
 	    else {
 	    	response.put("login", "success");
-	    	for(User u : userRepository.findAll()) {
-	    		u.setWas_last_user(false);
-	    		userRepository.save(u);
-	    	}
-	    	users.get(0).setWas_last_user(true);
-	    	userRepository.save(users.get(0));
 	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
 	    }
 	}

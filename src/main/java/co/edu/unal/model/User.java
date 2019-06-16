@@ -46,8 +46,6 @@ public class User implements Serializable{
 	@NotNull
 	private boolean is_active;
 
-	private boolean was_last_user;
-
 	private String username;
 
 	public Long getId() {
@@ -104,14 +102,6 @@ public class User implements Serializable{
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public boolean getWas_last_user() {
-		return was_last_user;
-	}
-
-	public void setWas_last_user(boolean was_last_user) {
-		this.was_last_user = was_last_user;
 	}
 
 }
