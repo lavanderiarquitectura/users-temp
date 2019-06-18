@@ -88,7 +88,7 @@ public class UserController {
 	    JSONObject response = new JSONObject();
 	    if(users.size() < 1 || !users.get(0).getPassword().equals(password)) {
 	    	response.put("login", "failure");
-	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.FORBIDDEN);
 	    }
 	    else {
 	    	long dayInMillis = 1000 * 60 * 60 * 24;
@@ -98,6 +98,25 @@ public class UserController {
 	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
 	    }
 	}
+
+	
+	//Check if username/password are valid for login
+	@GetMapping("/operator/{user}/{password}")
+	public ResponseEntity<Object> loginUser(@PathVariable(value = "user") String user, @PathVariable(value = "password") String password) {
+	    JSONObject response = new JSONObject();
+	    if(user.equals("admin") && password.equals("admin123")) {
+	    	long dayInMillis = 1000 * 60 * 60 * 24;
+	    	Token token = new Token(0, generateTokenString(), System.currentTimeMillis() + dayInMillis);
+	    	tokens.add(token);
+	    	response.put("login", token.getToken());
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
+	    }
+	    else {
+	    	response.put("login", "failure");
+	    	return new ResponseEntity<Object>(response.toString(), HttpStatus.FORBIDDEN);
+	    }
+	}
+	
 	
 	// Create a new User
 	@PostMapping("/users")
