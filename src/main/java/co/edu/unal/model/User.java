@@ -42,12 +42,7 @@ public class User implements Serializable{
 
 	@NotNull
 	private Integer room_id;
-
-	@NotNull
-	private boolean is_active;
-
-	private String username;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -88,20 +83,5 @@ public class User implements Serializable{
 		this.room_id = room_id;
 	}
 
-	public boolean getIs_active() {
-		return is_active;
-	}
-
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 }
