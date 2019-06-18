@@ -36,7 +36,7 @@ public class UserController {
 	@GetMapping("/users/{id}")
 	public User getUserById(@PathVariable(value = "id") Long userId) {
 	    return userRepository.findById(userId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Note", "id", userId));
+	            .orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 	}
 	
 	// Get all tokens

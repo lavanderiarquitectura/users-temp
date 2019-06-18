@@ -17,6 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+        <javaee-api.version>7.0</javaee-api.version>
 	</properties>
 
 	<dependencies>
@@ -51,6 +52,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.novell.ldap</groupId>
+			<artifactId>jldap</artifactId>
+			<version>4.3</version>
+		</dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
