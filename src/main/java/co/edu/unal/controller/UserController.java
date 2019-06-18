@@ -51,7 +51,8 @@ public class UserController {
 		JSONObject response = new JSONObject();
 		for(Token t : tokens) {
 			if(t.getToken().equals(token)) {
-				if(t.getExpiration() <= System.currentTimeMillis()) {
+				System.out.println("Token found!");
+				if(t.getExpiration() >= System.currentTimeMillis()) {
 					response.put("user", t.getUserId());
 					return new ResponseEntity<Object>(response.toString(), HttpStatus.OK);
 				}
